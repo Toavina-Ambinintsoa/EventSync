@@ -6,4 +6,8 @@ export class SpeakerService {
     async get_all_speakers() {
         return this.speaker_repository.find_all_speakers();
     }
+
+    async get_speaker_by_id(id: string) {
+        return this.speaker_repository.find_speaker_by_id(id);
+    }
 }
