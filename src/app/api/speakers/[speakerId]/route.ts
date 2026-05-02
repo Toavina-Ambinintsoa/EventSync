@@ -1,18 +1,19 @@
 import { NextResponse } from "next/server";
 import { SpeakerRepository } from "@/repository/speaker.repository";
 import { SpeakerService } from "@/services/speaker.service";
+import {cons} from "effect/List";
 
 const speaker_service = new SpeakerService(new SpeakerRepository());
 
 interface Params {
-    params: { speakerId: string };
+    params: Promise<{ speakerId: string }>;
 }
 
 // GET /api/speakers/:speakerId
 export async function GET(_req: Request, { params }: Params) {
     try {
-        const speaker = await speaker_service.get_speaker_by_id(params.speakerId);
-
+        const {speakerId} = await params;
+        const speaker = await speaker_service.get_speaker_by_id(speakerId);
         if (!speaker) {
             return NextResponse.json(
                 { error: "Intervenant introuvable" },

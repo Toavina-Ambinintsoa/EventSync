@@ -5,13 +5,14 @@ import { SpeakerService } from "@/services/speaker.service";
 const speaker_service = new SpeakerService(new SpeakerRepository());
 
 interface Params {
-    params: { speakerId: string };
+    params: Promise<{ speakerId: string }>;
 }
 
 // GET /api/speakers/:speakerId/sessions
 export async function GET(_req: Request, { params }: Params) {
     try {
-        const speaker = await speaker_service.get_speaker_by_id(params.speakerId);
+        const {speakerId} = await params;
+        const speaker = await speaker_service.get_speaker_by_id(speakerId);
 
         if (!speaker) {
             return NextResponse.json(
@@ -20,7 +21,7 @@ export async function GET(_req: Request, { params }: Params) {
             );
         }
 
-        const sessions = await speaker_service.get_sessions_by_speaker(params.speakerId);
+        const sessions = await speaker_service.get_sessions_by_speaker(speakerId);
         return NextResponse.json(sessions, { status: 200 });
     } catch (error) {
         console.error("[GET /api/speakers/:speakerId/sessions]", error);
