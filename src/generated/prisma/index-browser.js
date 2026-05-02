@@ -129,6 +129,42 @@ exports.Prisma.EventScalarFieldEnum = {
   location: 'location'
 };
 
+exports.Prisma.RoomScalarFieldEnum = {
+  id: 'id',
+  name: 'name'
+};
+
+exports.Prisma.SessionScalarFieldEnum = {
+  id: 'id',
+  title: 'title',
+  description: 'description',
+  startTime: 'startTime',
+  endTime: 'endTime',
+  capacity: 'capacity',
+  eventId: 'eventId',
+  roomId: 'roomId'
+};
+
+exports.Prisma.SpeakerScalarFieldEnum = {
+  id: 'id',
+  fullName: 'fullName',
+  photo: 'photo',
+  bio: 'bio',
+  twitter: 'twitter',
+  linkedin: 'linkedin',
+  github: 'github',
+  website: 'website'
+};
+
+exports.Prisma.QuestionScalarFieldEnum = {
+  id: 'id',
+  content: 'content',
+  authorName: 'authorName',
+  upvotes: 'upvotes',
+  sessionId: 'sessionId',
+  createdAt: 'createdAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -139,9 +175,18 @@ exports.Prisma.QueryMode = {
   insensitive: 'insensitive'
 };
 
+exports.Prisma.NullsOrder = {
+  first: 'first',
+  last: 'last'
+};
+
 
 exports.Prisma.ModelName = {
-  Event: 'Event'
+  Event: 'Event',
+  Room: 'Room',
+  Session: 'Session',
+  Speaker: 'Speaker',
+  Question: 'Question'
 };
 
 /**
