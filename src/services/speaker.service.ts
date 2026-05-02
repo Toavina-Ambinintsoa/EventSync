@@ -10,4 +10,8 @@ export class SpeakerService {
     async get_speaker_by_id(id: string) {
         return this.speaker_repository.find_speaker_by_id(id);
     }
+
+    async get_sessions_by_speaker(id: string) {
+        return this.speaker_repository.find_sessions_by_speaker(id);
+    }
 }
